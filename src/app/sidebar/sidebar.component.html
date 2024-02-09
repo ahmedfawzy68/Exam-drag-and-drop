@@ -1,0 +1,30 @@
+<section [style.width]="toggle" class="d-flex justify-content-between flex-column pb-4">
+    <i (click)="toggleWidth()" [style.left]="toggle == '250px' ? '250px' : '0'"
+        class="fa-solid fa-arrows-left-right d-lg-none d-block toggle-icon"></i>
+    <div [style]="toggle == '250px' ? 'opacity: 1; transition: opacity 1s ease-in-out;' : 'opacity: 0; transition: opacity 0s;'"
+        class="top">
+        <div class="logo d-flex justify-content-center align-items-center gap-3 pt-3">
+            <div>
+                <img src="assets/imgs/Logo.png" width="58" alt="logo">
+            </div>
+            <div>
+                <h1>Your Book</h1>
+            </div>
+        </div>
+        <nav class="mt-5 container">
+            <ul class="navs p-0">
+                <li class="py-2 mb-2 ps-3 pointer"><i class="fa-solid fa-square-poll-vertical me-2"></i> Main</li>
+                <li routerLinkActive="active"  routerLink="/subjects"
+                    class="py-2 mb-2 ps-3 pointer"><i class="fa-solid fa-square-poll-horizontal me-2"></i> Subjects
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div [style]="toggle == '250px' ? 'opacity: 1; transition: opacity 1s ease-in-out;' : 'opacity: 0; transition: opacity 0s;'"
+        class="bottom container">
+        <ul class="logout p-0">
+            <li class="py-2 mb-2 ps-3 pointer"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Signout
+            </li>
+        </ul>
+    </div>
+</section>

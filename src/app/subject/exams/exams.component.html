@@ -1,0 +1,67 @@
+<section>
+    <div class="container mt-4">
+        <div class="row" cdkDropListGroup>
+            <div class="col-lg-3 mb-4">
+                <div class="box-question-lists mb-4">
+                    <div class="title pt-3 px-3">
+                        <h6>Pull the question type</h6>
+                    </div>
+                    <div class="drag-list pb-3 px-3" cdkDropList [cdkDropListData]="dragList"
+                        (cdkDropListDropped)="drop($event)">
+                        <p *ngFor="let list of dragList" cdkDrag>{{list.name}}</p>
+                    </div>
+                </div>
+                <div *ngFor="let draft of drafts; let i = index;" class="drafts-box mb-4">
+                    <div class="title pt-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h6>Drafts ({{draft.type}})</h6>
+                            <i (click)="deleteDraft(i)" class="fa-solid fa-trash text-danger pointer"></i>
+                        </div>
+                    </div>
+                    <div class="drafts-questions">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p>{{draft.text}}</p>
+                            <div [class]="draft.difficulty === 'easy' ? 'alert-success' : (draft.difficulty === 'medium' ? 'alert-warning' : 'alert-danger')"
+                                class="alert custom-alert py-1 px-2">
+                                {{draft.difficulty}}
+                            </div>
+                        </div>
+                        <div class="choices">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <li>{{draft.choice1}}</li>
+                                <i [class]="draft.correct1 ? 'fa-check text-success' : 'fa-xmark text-danger'"
+                                    class="fa-solid"></i>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <li>{{draft.choice2}}</li>
+                                <i [class]="draft.correct2 ? 'fa-check text-success' : 'fa-xmark text-danger'"
+                                    class="fa-solid"></i>
+                            </div>
+                            <div *ngIf="draft.choice3" class="d-flex align-items-center justify-content-between">
+                                <li>{{draft.choice3}}</li>
+                                <i [class]="draft.correct3 ? 'fa-check text-success' : 'fa-xmark text-danger'"
+                                    class="fa-solid"></i>
+                            </div>
+                            <div *ngIf="draft.choice4" class="d-flex align-items-center justify-content-between">
+                                <li>{{draft.choice4}}</li>
+                                <i [class]="draft.correct4 ? 'fa-check text-success' : 'fa-xmark text-danger'"
+                                    class="fa-solid"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 mb-4">
+                <div class="drop-box" cdkDropList [cdkDropListData]="dropList" (cdkDropListDropped)="drop($event)">
+                    <p *ngIf="dropList.length == 0">Pull and drag the type of question here ..</p>
+                    <div class="drop-list">
+                        <p *ngFor="let drop of dropList" cdkDrag>{{drop.name}}</p>
+                    </div>
+                </div>
+                <div *ngFor="let drop of dropList" class="show-exam-question mt-3">
+                    <app-question (sendDraft)="receiveData($event)" [type]="drop.name"></app-question>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

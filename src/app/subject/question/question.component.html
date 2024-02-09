@@ -1,0 +1,56 @@
+<section *ngIf="type != 'Text'">
+    <div class="question-container">
+        <div class="question-type">
+            <h5>{{type}}</h5>
+        </div>
+        <div class="form-container mt-4">
+            <form [formGroup]="myForm" (ngSubmit)="draft(myForm)">
+                <input formControlName="text" type="text" class="form-control p-3" placeholder="Question text,,,">
+                <div class="d-flex align-items-center gap-3 my-3">
+                    <button (click)="addQuestion()" class="add-option me-lg-5 me-md-4" type="button"><i
+                            class="fa-solid fa-plus me-md-2"></i><span class="d-none d-md-inline-block">New
+                            Option</span></button>
+                    <div class="form-check">
+                        <input formControlName="difficulty" value="easy" class="form-check-input pointer" type="radio"
+                            name="difficulty" id="easy">
+                        <label class="form-check-label" for="easy">
+                            Easy
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input formControlName="difficulty" value="medium" class="form-check-input pointer" type="radio"
+                            name="difficulty" id="medium">
+                        <label class="form-check-label" for="medium">
+                            Medium
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input formControlName="difficulty" value="hard" class="form-check-input pointer" type="radio"
+                            name="difficulty" id="hard">
+                        <label class="form-check-label" for="hard">
+                            Hard
+                        </label>
+                    </div>
+                </div>
+                <div *ngFor="let question of questionArray; let i = index;"
+                    class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                    <input [formControlName]="'choice' + (i+1)" type="text"
+                        [placeholder]="type == 'Multiple choice' ? 'Choice ' + (i + 1) : i == 0 ? 'True' :'False'"
+                        class="form-control custom-width-input">
+                    <div class="form-check">
+                        <input [formControlName]="'correct' + (i + 1)" (change)="giveCheck($event, i+1)"
+                            class="form-check-input pointer" [type]="type == 'Multiple choice'? 'checkbox' : 'radio'"
+                            name="correct" [id]="'choice' + (i + 1)">
+                        <label class="form-check-label" [for]="'choice' + (i + 1)">
+                            Select as a correct answer
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="questionArray.length > 0" class="d-flex align-items-center gap-3 mt-4">
+                    <button class="save" type="submit">Save as draft</button>
+                    <button (click)="cancel()" class="cancel" type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

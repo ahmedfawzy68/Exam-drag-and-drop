@@ -1,0 +1,88 @@
+.box-question-lists,
+.drafts-box {
+    background-color: var(--secondary-color);
+    border-radius: 12px;
+}
+.drafts-box {
+    background-color: var(--light-gray);
+    padding: 10px 20px;
+}
+.box-question-lists h6 {
+    font-weight: 600;
+    padding: 10px;
+}
+li{
+    list-style: none;
+    font-size: 14px;
+}
+.box-question-lists p {
+    font-size: 14px;
+    color: #000;
+    cursor: pointer;
+    transition: all 400ms;
+    border-radius: 5px;
+    user-select: none;
+    padding: 10px;
+}
+
+.drop-list p {
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.drag-list p:hover,
+.drag-list .cdkDrag {
+    background-color: #fff;
+    color: var(--primary-color);
+}
+
+.drop-box {
+    background-color: var(--light-gray);
+    padding: 30px 20px;
+    border-radius: 8px;
+    border: 3px dashed var(--secondary-color);
+}
+
+.drop-box p {
+    font-size: 14px;
+    user-select: none;
+}
+
+.drop-list p {
+    width: 30%;
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: var(--primary-color);
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+    border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media (max-width: 900px) {
+    .drop-list p {
+        width: 100%;
+    }
+}

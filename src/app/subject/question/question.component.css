@@ -1,0 +1,64 @@
+.question-container {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h5 {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 60, 166, .25);
+    border-color: var(--primary-color);
+}
+
+.add-option {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    transition: all 400ms;
+}
+
+.add-option:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.custom-width-input {
+    width: 60% !important;
+}
+
+.save {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-weight: 700;
+}
+
+.cancel {
+    font-weight: 700;
+    border-radius: 6px;
+    background-color: #FEEDED;
+    color: #F70505;
+    border: none;
+    padding: 8px;
+
+}
+
+@media (max-width: 600px) {
+    .custom-width-input {
+        width: 100% !important;
+    }
+}
