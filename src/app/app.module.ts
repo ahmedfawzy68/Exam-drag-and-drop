@@ -6,6 +6,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from './shared/shared.module';
 import { SubjectModule } from './subject/subject.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 
 
@@ -21,7 +23,9 @@ import { SubjectModule } from './subject/subject.module';
     SubjectModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
