@@ -14,7 +14,7 @@ export class ExamsComponent implements OnInit {
   drafts: any[] = [];
   dragList: questionList[] = [
     { name: "Multiple choice" },
-    { name: "True or False" },
+    { name: "Single choice" },
     { name: "Text" }
   ]
 
