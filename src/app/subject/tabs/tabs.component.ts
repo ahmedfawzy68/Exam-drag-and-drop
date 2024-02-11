@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTabChangeEvent } from '@angular/material/tabs';
+import { TabSelectionService } from 'src/app/tab-selection.service';
+
 
 
 @Component({
@@ -8,8 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _TabSelectionService: TabSelectionService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  send(event: MatTabChangeEvent) {
+    this._TabSelectionService.selectedTabLabelSubject.next(event.tab.textLabel);
+  }
 
 }

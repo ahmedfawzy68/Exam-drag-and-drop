@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TabSelectionService } from '../tab-selection.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  tab: string = ''
 
-  constructor() { }
+  constructor(private _TabSelectionService: TabSelectionService) { }
 
   ngOnInit(): void {
+    this._TabSelectionService.selectedTabLabelSubject.subscribe(label => {
+      this.tab = label;
+    })
   }
 
 }

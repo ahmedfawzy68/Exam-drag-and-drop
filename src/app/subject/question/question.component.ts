@@ -50,6 +50,11 @@ export class QuestionComponent implements OnInit {
     }
   }
 
+  convertNumberToWord(num: number): string {
+    const words = ['one', 'two', 'three', 'four',];
+    return words[num];
+  }
+
   cancel() {
     this.questionArray.splice(0, this.questionArray.length);
     this.myForm.reset();
